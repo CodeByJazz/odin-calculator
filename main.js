@@ -47,15 +47,22 @@ function calculate() {
   currentNum = Number(currentNum);
 
   if (operator === "+") {
-    previousNum = previousNum + currentNum;
+    previousNum += currentNum;
   } else if (operator === "-") {
-    previousNum = previousNum - currentNum;
+    previousNum -= currentNum;
   } else if (operator === "x") {
-    previousNum = previousNum * currentNum;
+    previousNum *= currentNum;
   } else if (operator === "/") {
-    previousNum = previousNum / currentNum;
+    if (currentNum <= 0) {
+      previousNum = "Error";
+      previousDisplayNumber.textContent = "";
+      currentDisplayNumber.textContent = previousNum;
+      operator = "";
+      return;
+    }
+    previousNum /= currentNum;
   }
-
+  previousNum = previousNum.toString();
   previousDisplayNumber.textContent = "";
   currentDisplayNumber.textContent = previousNum;
 }
