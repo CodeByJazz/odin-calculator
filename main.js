@@ -1,4 +1,4 @@
-let curentNum = "";
+let currentNum = "";
 let previousNum = "";
 let operator = "";
 
@@ -20,6 +20,10 @@ numberButtons.forEach((btn) => {
     handleNumber(e.target.textContent);
   });
 });
+
 function handleNumber(number) {
-  console.log(number);
+  if (currentNum.length <= 11) {
+    currentNum += number;
+    currentDisplayNumber.textContent = currentNum;
+  }
 }
