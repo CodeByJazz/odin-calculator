@@ -6,11 +6,16 @@ const currentDisplayNumber = document.querySelector(".currentNumber");
 const previousDisplayNumber = document.querySelector(".previousNumber");
 
 const equal = document.querySelector(".equal");
-equal.addEventListener("click", calculate);
+equal.addEventListener("click", () => {
+  if (currentNum != "" && previousNum != "") {
+    calculate();
+  }
+});
 
 const decimal = document.querySelector(".decimal");
 
 const clear = document.querySelector(".clear");
+clear.addEventListener("click", clearCalculator);
 
 const numberButtons = document.querySelectorAll(".number");
 
@@ -79,4 +84,12 @@ function displayResults() {
   } else {
     currentDisplayNumber.textContent = previousNum.slice(0, 11) + "...";
   }
+}
+
+function clearCalculator() {
+  currentNum = "";
+  previousNum = "";
+  operator = "";
+  currentDisplayNumber.textContent = "0";
+  previousDisplayNumber.textContent = "";
 }
